@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AulaModelo.Modelo.DB.Model.Jogo>
+
+@{
+    ViewBag.Title = "Jogos";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Jogo", "InserirJogo")
+</p>
+
+<hr/>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtLancamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Studio)
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DtLancamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Studio)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "AlterarJogo", new { id = item.Id }) |
+            @Html.ActionLink("Detalhes", "DetalharJogo", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "ApagarJogo", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
