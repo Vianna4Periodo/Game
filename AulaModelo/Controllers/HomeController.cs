@@ -1,8 +1,6 @@
 ﻿using AulaModelo.Modelo.DB.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AulaModelo.Controllers
@@ -22,7 +20,7 @@ namespace AulaModelo.Controllers
 
         public ActionResult AlterarJogo(Guid id)
         {
-            var jogo = Jogo.Jogos.FirstOrDefault(f => f.Id == id);
+            Jogo jogo = Jogo.Jogos.FirstOrDefault(f => f.Id == id);
 
             if (jogo != null)
             {
@@ -45,7 +43,7 @@ namespace AulaModelo.Controllers
                 p.Titulo = jogo.Titulo;
                 p.DtLancamento = jogo.DtLancamento;
                 p.Genero = jogo.Genero;
-                p.Studio = jogo.Studio;
+                p.Estudio = jogo.Estudio;
             }
                         
             return RedirectToAction("Index");
@@ -74,13 +72,11 @@ namespace AulaModelo.Controllers
 
         public ActionResult DetalharJogo(Guid id)
         {
-            var jogo = Jogo.Jogos.FirstOrDefault(f => f.Id == id);
-
+            Jogo jogo = Jogo.Jogos.FirstOrDefault(f => f.Id == id);
             if (jogo != null)
             {
                 return View("DetalharJogo", jogo);
             }
-
             return RedirectToAction("Index");
         }
 
